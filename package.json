@@ -1,0 +1,24 @@
+{
+  "name": "duplicate-reconciliation-program",
+  "version": "1.0.0",
+  "description": "![GitHub Last Commit](https://img.shields.io/github/last-commit/samrogers15/duplicate-reconciliation-program?style=plastic) ![GitHub Repo Size](https://img.shields.io/github/repo-size/samrogers15/duplicate-reconciliation-program?style=plastic) ![GitHub Followers](https://img.shields.io/github/followers/samrogers15?style=social) ![GitHub](https://img.shields.io/github/languages/top/samrogers15/duplicate-reconciliation-program?style=plastic)",
+  "main": "deduplicator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samrogers15/duplicate-reconciliation-program.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samrogers15/duplicate-reconciliation-program/issues"
+  },
+  "homepage": "https://github.com/samrogers15/duplicate-reconciliation-program#readme",
+  "devDependencies": {
+    "mocha": "^9.1.1",
+    "winston": "^3.3.3"
+  }
+}
