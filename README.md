@@ -12,7 +12,7 @@
 * [Application Instructions](#application-instructions)
 * [Testing Instructions](#testing-instructions)
 * [Technologies and Sources](#technologies-and-sources)
-* [Screen Shot](#screen-shot)
+* [Screen Shots](#screen-shots)
 * [Code Snippets](#code-snippets)
 * [Contact](#contact)
 
@@ -23,21 +23,19 @@ This program is written in JavaScript and uses Node.js to create a command-line 
 To run this program:
 
 1. Clone repository to your local computer and open repository in preferred code editor (this program was written using Visual Studio Code).
-2. Follow the below installation protocol:
-    * `NPM init` - initialize Node
-    * `NPM install` - set up for local development
-    * `NPM i winston` - installs Winston dependency for logging changes
-    * `NPM i --save-dev Mocha` - installs Mocha dependency for testing purposes
+2. Initialize the NPM packages using the below protocol:
+    * `npm install` - sets up program for local development and downloads required dependencies (in the case of this program, NPM Mocha and NPM Winston)
 3. Open a terminal and run `node deduplicator.js`
     * The program will initiate and remove duplicate entries from the `leads.json` file housed in the `Inputs` folder and sort the Array based on the `Entry Date` field.
     * The program will output the de-duplicated array to the `output.json` file housed in the `Outputs` folder
     * A log of the changes will be generated with a filename of `duplicateentries.log` so duplicate entries that were removed can be viewed and tracked.
 
 
-## Application Instructions
+## Testing Instructions
 This program also includes a testing framework created with the Mocha.js NPM dependency. In order to test the functions created, follow the below protocol:
-    1. Open a terminal and run `npm test`.
-    2. The tests will run and output will be generated in the terminal.
+
+1. Open a terminal and run `npm test`.
+2. The tests will run and output will be generated in the terminal.
 
 
 ## Technologies and Sources
@@ -48,7 +46,7 @@ This program also includes a testing framework created with the Mocha.js NPM dep
 * [Winston](https://www.npmjs.com/package/winston)
 
 
-## Screen Shot
+## Screen Shots
 Testing Framework
 
 ![Mocha Test](/assets/MochaTest.png)
@@ -96,4 +94,4 @@ Created by Sam Rogers - feel free to contact me to collaborate on a project!
 
 [![GMail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:samrogers15@gmail.com)
 
-[Sam Rogers Dev](https://samrogers15.github.io/Current_Portfolio/index.html)
+[Sam Rogers Dev](www.samrogersdev.com)
