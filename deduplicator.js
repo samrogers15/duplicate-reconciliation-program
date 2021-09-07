@@ -13,6 +13,16 @@ const logger = winston.createLogger({
   ],
 });
 
+function writeLog(item, prop) {
+  logger.log({
+    timestamp: new Date(),
+    level: "info",
+    message: "Duplicate entry removed from file",
+    duplicateProperty: prop,
+    item: item,
+  });
+}
+
 function removeDupes(leads, prop) {
   return leads.filter((obj, pos, arr) => {
     if (
@@ -23,16 +33,6 @@ function removeDupes(leads, prop) {
     } else {
       return true;
     }
-  });
-}
-
-function writeLog(item, prop) {
-  logger.log({
-    timestamp: new Date(),
-    level: "info",
-    message: "Duplicate entry removed from file",
-    duplicateProperty: prop,
-    item: item,
   });
 }
 
