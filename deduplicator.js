@@ -1,6 +1,5 @@
-const input = process.argv[2];
-
-const output = process.argv[3];
+const input = './Inputs/leads.json';
+const output = './Outputs/output.json';
 
 const fs = require("fs");
 
@@ -10,7 +9,7 @@ const logger = winston.createLogger({
   format: winston.format.json(),
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: "combined.log" }),
+    new winston.transports.File({ filename: "duplicateentries.log" }),
   ],
 });
 

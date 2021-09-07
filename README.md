@@ -9,22 +9,23 @@
  
 ## Table of contents
 * [General Info](#general-info)
-* [Technologies](#technologies)
-* [Screen Shot](#Screen-Shot)
+* [Technologies and Sources](#technologies-and-sources)
+* [Screen Shot](#screen-shot)
 * [Code Snippets](#code-snippets)
-* [Sources](#sources)
 * [Contact](#contact)
 
 ## General Info
 TBD.
 
-## Technologies
-* Javascript
-* Node
-* TBD
+## Technologies and Sources
+* [Javascript](https://www.javascript.com/)
+* [Node.js](https://nodejs.org/en/)
+* [NPM](https://www.npmjs.com/)
+* [Winston](https://www.npmjs.com/package/winston)
+* [Mocha](https://mochajs.org/)
 
 ## Screen Shot
-![Matt Coburn Sound](tbd)
+![Application Screenshot](tbd)
 
 ## Code Snippets
 
@@ -37,12 +38,6 @@ TBD snippet:
 ```js
 
 ```
-
-## Sources
-Application enabled using the following sources:
-
-* [NPM](https://www.npmjs.com/)
-* TBD
 
 ## Contact
 Created by Sam Rogers - feel free to contact me to collaborate on a project!
