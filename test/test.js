@@ -1,8 +1,10 @@
-var MyMethods = require("../deduplicator");
-var sortDate = MyMethods.sortDate;
-var removeDupes = MyMethods.removeDupes;
+// var MyMethods = require("../deduplicator");
+// var sortDate = MyMethods.sortDate;
+// var removeDupes = MyMethods.removeDupes;
 
-var assert = require("assert");
+const { sortDate, removeDupes } = require('../deduplicator');
+
+const assert = require("assert");
 
 describe("Sort date function test", () => {
   it("Should return true if the dates passed are identical.", () => {
