@@ -1,5 +1,5 @@
-const input = './Inputs/leads.json';
-const output = './Outputs/output.json';
+const input = "./Inputs/leads.json";
+const output = "./Outputs/output.json";
 
 const fs = require("fs");
 
@@ -25,10 +25,9 @@ function writeLog(item, prop) {
 
 function removeDupes(leads, prop) {
   return leads.filter((obj, pos, arr) => {
-    if (
-      (arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === pos) ===
-      false
-    ) {
+    const duplicates =
+      arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === pos;
+    if (duplicates === false) {
       writeLog(arr[pos], prop);
     } else {
       return true;

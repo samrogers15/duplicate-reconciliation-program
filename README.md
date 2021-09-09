@@ -73,10 +73,9 @@ removeDupes function:
 ```js
 function removeDupes(leads, prop) {
   return leads.filter((obj, pos, arr) => {
-    if (
-      (arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === pos) ===
-      false
-    ) {
+    const duplicates =
+      arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === pos;
+    if (duplicates === false) {
       writeLog(arr[pos], prop);
     } else {
       return true;
