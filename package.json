@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/samrogers15/duplicate-reconciliation-program#readme",
   "devDependencies": {
-    "jest": "^27.1.0",
     "mocha": "^9.1.1",
     "winston": "^3.3.3"
+  },
+  "dependencies": {
+    "logform": "^2.2.0"
   }
 }

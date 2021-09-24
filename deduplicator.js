@@ -36,16 +36,17 @@ function removeDupes(leads, prop) {
 }
 
 function sortDate(a, b) {
-  if (new Date(b.entryDate).getTime() === new Date(a.entryDate).getTime()) {
+  if (new Date(a.entryDate).getTime() === new Date(b.entryDate).getTime()) {
     return true;
   } else {
-    return new Date(b.entryDate).getTime() - new Date(a.entryDate).getTime();
+    return new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime();
   }
 }
 
 fs.readFile(input, "utf8", function (err, data) {
   if (err) throw err;
   let leads = JSON.parse(data).leads.sort(sortDate);
+  console.log(leads);
   let results = {};
 
   results.leads = removeDupes(removeDupes(leads, "_id"), "email");
