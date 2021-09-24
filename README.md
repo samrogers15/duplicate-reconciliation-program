@@ -18,7 +18,11 @@
 
 
 ## Application Instructions
-This program is written in JavaScript and uses Node.js to create a command-line application that removes duplicate entries from an Array. Additionally, it also uses two NPM packages: Winston (to log the duplicate entries removed from the Array) and Mocha (a testing framework to ensure the functions are written and operating properly).
+This program is written in JavaScript and uses Node.js to create a command-line application that removes duplicate entries from an Array. Additionally, it also uses two NPM packages: Winston (to log the duplicate entries removed from the Array) and Mocha (a testing framework to ensure the functions are written and operating properly). The application has been written in three Javascript files:
+
+1. deduplicateLeads.js - This file contains the code for removing duplicate leads based on both Email and ID properties.
+2. outputRevisedLeads.js - This file contains the code for outputting a new JSON file containing the de-duplicated array.
+3. logDuplicates.js - This file contains the code for logging the duplicate leads (and their duplicate property) that were removed from the Array.
 
 To run this program:
 
