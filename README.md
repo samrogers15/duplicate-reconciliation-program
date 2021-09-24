@@ -28,10 +28,10 @@ To run this program:
 3. Open an integrated terminal and run `node deduplicateLeads.js`
     * The program will initiate and remove duplicate entries from the `leads.json` file housed in the `Inputs` folder
     * The program will output the de-duplicated array to the `output.json` file housed in the `Outputs` folder
-    <br>
-    ***Please note, if there are objects in the array with identical dates, the data from the record provided last in the list will be preferred***
-    <br>
     * A log of the changes will be generated with a filename of `duplicateEntries.log` so duplicate entries that were removed can be viewed and tracked.
+<br>
+***Please note, if there are objects in the array with identical dates, the data from the record provided last in the list will be preferred***
+<br>
 
 
 ## Testing Instructions
