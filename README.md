@@ -5,7 +5,7 @@
 
 
 # Duplicate Reconciliation Program
-> This is a repository for a duplicate reconciliation program. When initiated, this program searches through an Array and removes duplicate entries based on specific properties that should not have duplicates. In addition to outputting a new Array without duplicates, this program also logs the duplicate entries that were removed from the original Array along with timestamps.
+> This is a repository for a duplicate reconciliation program. When initiated, this program searches through an Array of Objects and removes duplicate entries based on specific properties that should not have duplicates. In addition to outputting a new Array without duplicates, this program also logs the duplicate entries that were removed from the original Array along with timestamps.
 
 
 ## Table of contents
@@ -25,10 +25,12 @@ To run this program:
 1. Clone repository to your local computer and open repository in preferred code editor (this program was written using Visual Studio Code).
 2. Initialize the NPM packages using the below protocol:
     * `npm install` - sets up program for local development and downloads required dependencies (in the case of this program, NPM Mocha and NPM Winston)
-3. Open a terminal and run `node deduplicator.js`
-    * The program will initiate and remove duplicate entries from the `leads.json` file housed in the `Inputs` folder and sort the Array based on the `Entry Date` field.
+3. Open an integrated terminal and run `node deduplicateLeads.js`
+    * The program will initiate and remove duplicate entries from the `leads.json` file housed in the `Inputs` folder
     * The program will output the de-duplicated array to the `output.json` file housed in the `Outputs` folder
-    * A log of the changes will be generated with a filename of `duplicateentries.log` so duplicate entries that were removed can be viewed and tracked.
+    <br>
+    __***Please note, if there are objects in the array with identical dates, the data from the record provided last in the list will be preferred***__
+    * A log of the changes will be generated with a filename of `duplicateEntries.log` so duplicate entries that were removed can be viewed and tracked.
 
 
 ## Testing Instructions
@@ -58,31 +60,27 @@ Program Output
 
 ## Code Snippets
 
-sortDate function:
+deduplicateLeads function:
 ```js
-function sortDate(a, b) {
-  if (new Date(b.entryDate).getTime() === new Date(a.entryDate).getTime()) {
-    return true;
-  } else {
-    return new Date(b.entryDate).getTime() - new Date(a.entryDate).getTime();
-  }
-}
+const deduplicateLeads = (array) => {
+  return array
+    .slice()
+    .reverse()
+    .filter((value, index, arr) => {
+      const duplicateEmail =
+        arr.findIndex((t) => t.email === value.email) === index;
+      const duplicateID = arr.findIndex((t) => t._id === value._id) === index;
+      if (duplicateID === false) {
+        writeLog(arr[index], "ID", arr[index]._id);
+      } else if (duplicateEmail === false) {
+        writeLog(arr[index], "Email", arr[index].email);
+      } else {
+        return true;
+      }
+    });
+};
 ```
 
-removeDupes function:
-```js
-function removeDupes(leads, prop) {
-  return leads.filter((obj, pos, arr) => {
-    const duplicates =
-      arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === pos;
-    if (duplicates === false) {
-      writeLog(arr[pos], prop);
-    } else {
-      return true;
-    }
-  });
-}
-```
 
 ## Contact
 Created by Sam Rogers - feel free to contact me to collaborate on a project!
