@@ -1,63 +1,144 @@
-// var MyMethods = require("../deduplicator");
-// var sortDate = MyMethods.sortDate;
-// var removeDupes = MyMethods.removeDupes;
-
-const { sortDate, removeDupes } = require('../deduplicator');
+const { deduplicateLeads } = require("../deduplicateLeads");
 
 const assert = require("assert");
 
-describe("Sort date function test", () => {
-  it("Should return true if the dates passed are identical.", () => {
-    let x = { entryDate: "2014-05-07T17:31:20+00:00" };
-    let y = { entryDate: "2014-05-07T17:31:20+00:00" };
-    const result = sortDate(x, y);
-    assert.equal(result, true);
-  });
-
-  it("Should return negative if the date in the first entry is after the date in the second entry.", () => {
-    let x = { entryDate: "2017-05-07T17:31:20+00:00" };
-    let y = { entryDate: "2014-05-07T17:31:20+00:00" };
-    const result = sortDate(x, y);
-    assert(result < 0);
-  });
-
-  it("Should return positive if the date in the first entry is before the date in the second entry.", () => {
-    let x = { entryDate: "2014-05-07T17:31:20+00:00" };
-    let y = { entryDate: "2017-05-07T17:31:20+00:00" };
-    const result = sortDate(x, y);
-    assert(result > 0);
-  });
-
-  it("Should fail if only passed one parameter.", () => {
-    assert.throws(() => {
-      let x = { entryDate: "2014-05-07T17:31:20+00:00" };
-      sortDate(x);
-    });
-  });
-});
-
 describe("Remove duplicates function test.", () => {
-  it("Removes duplicate values from array of objects based on property defined", () => {
+  it("Removes duplicate values from array of objects based on duplicate email property", () => {
     let array = [
-      { email: "foo@bar.com" },
-      { email: "mae@bar.com" },
-      { email: "coo@bar.com" },
-      { email: "foo@bar.com" },
+      {
+        _id: "jkj238238jdsnfsj23",
+        email: "foo@bar.com",
+        firstName: "John",
+        lastName: "Smith",
+        address: "123 Street St",
+        entryDate: "2014-05-07T17:30:20+00:00",
+      },
+      {
+        _id: "edu45238jdsnfsj23",
+        email: "mae@bar.com",
+        firstName: "Ted",
+        lastName: "Masters",
+        address: "44 North Hampton St",
+        entryDate: "2014-05-07T17:31:20+00:00",
+      },
+      {
+        _id: "wabaj238238jdsnfsj23",
+        email: "bog@bar.com",
+        firstName: "Fran",
+        lastName: "Jones",
+        address: "8803 Dark St",
+        entryDate: "2014-05-07T17:31:20+00:00",
+      },
+      {
+        _id: "jkj238238jdsnfsj23",
+        email: "coo@bar.com",
+        firstName: "Ted",
+        lastName: "Jones",
+        address: "456 Neat St",
+        entryDate: "2014-05-07T17:32:20+00:00",
+      },
+      {
+        _id: "sel045238jdsnfsj23",
+        email: "foo@bar.com",
+        firstName: "John",
+        lastName: "Smith",
+        address: "123 Street St",
+        entryDate: "2014-05-07T17:32:20+00:00",
+      },
     ];
-    let property = "email";
-    const result = removeDupes(array, property);
-    assert(result.length === 3);
+    const result = deduplicateLeads(array);
+    const duplicateEmailRemoved = (arr, prop) => {
+      return arr.some((element) => element.prop === prop);
+    };
+    assert(duplicateEmailRemoved(result, "sel045238jdsnfsj23") === false);
   });
 
-  it("Does not augment any values from the array if there are no duplicates based on property defined.", () => {
+  it("Removes duplicate values from array of objects based on duplicate ID property", () => {
     let array = [
-      { email: "foo@bar.com" },
-      { email: "mae@bar.com" },
-      { email: "coo@bar.com" },
-      { email: "foo1@bar.com" },
+      {
+        _id: "jkj238238jdsnfsj23",
+        email: "foo@bar.com",
+        firstName: "John",
+        lastName: "Smith",
+        address: "123 Street St",
+        entryDate: "2014-05-07T17:30:20+00:00",
+      },
+      {
+        _id: "edu45238jdsnfsj23",
+        email: "mae@bar.com",
+        firstName: "Ted",
+        lastName: "Masters",
+        address: "44 North Hampton St",
+        entryDate: "2014-05-07T17:31:20+00:00",
+      },
+      {
+        _id: "wabaj238238jdsnfsj23",
+        email: "bog@bar.com",
+        firstName: "Fran",
+        lastName: "Jones",
+        address: "8803 Dark St",
+        entryDate: "2014-05-07T17:31:20+00:00",
+      },
+      {
+        _id: "jkj238238jdsnfsj23",
+        email: "coo@bar.com",
+        firstName: "Ted",
+        lastName: "Jones",
+        address: "456 Neat St",
+        entryDate: "2014-05-07T17:32:20+00:00",
+      },
     ];
-    let property = "email";
-    const result = removeDupes(array, property);
+    const result = deduplicateLeads(array);
+    const duplicateIDRemoved = (arr, prop) => {
+      return arr.some((element) => element.prop === prop);
+    };
+    assert(duplicateIDRemoved(result, "foo@bar.com") === false);
+  });
+
+  it("Removes duplicate values from array of objects based on duplicate Email or ID property", () => {
+    let array = [
+      {
+        _id: "jkj238238jdsnfsj23",
+        email: "foo@bar.com",
+        firstName: "John",
+        lastName: "Smith",
+        address: "123 Street St",
+        entryDate: "2014-05-07T17:30:20+00:00",
+      },
+      {
+        _id: "edu45238jdsnfsj23",
+        email: "mae@bar.com",
+        firstName: "Ted",
+        lastName: "Masters",
+        address: "44 North Hampton St",
+        entryDate: "2014-05-07T17:31:20+00:00",
+      },
+      {
+        _id: "wabaj238238jdsnfsj23",
+        email: "bog@bar.com",
+        firstName: "Fran",
+        lastName: "Jones",
+        address: "8803 Dark St",
+        entryDate: "2014-05-07T17:31:20+00:00",
+      },
+      {
+        _id: "jkj238238jdsnfsj23",
+        email: "coo@bar.com",
+        firstName: "Ted",
+        lastName: "Jones",
+        address: "456 Neat St",
+        entryDate: "2014-05-07T17:32:20+00:00",
+      },
+      {
+        _id: "sel045238jdsnfsj23",
+        email: "foo@bar.com",
+        firstName: "John",
+        lastName: "Smith",
+        address: "123 Street St",
+        entryDate: "2014-05-07T17:32:20+00:00",
+      },
+    ];
+    const result = deduplicateLeads(array);
     assert(result.length === 4);
   });
 });
