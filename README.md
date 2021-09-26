@@ -78,9 +78,9 @@ const deduplicateLeads = (array) => {
     .slice()
     .reverse()
     .filter((value, index, arr) => {
+      const duplicateID = arr.findIndex((t) => t._id === value._id) === index;
       const duplicateEmail =
         arr.findIndex((t) => t.email === value.email) === index;
-      const duplicateID = arr.findIndex((t) => t._id === value._id) === index;
       if (duplicateID === false) {
         writeLog(arr[index], "ID", arr[index]._id);
       } else if (duplicateEmail === false) {
