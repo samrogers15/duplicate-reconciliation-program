@@ -1,4 +1,4 @@
-const { deduplicateLeads } = require("../deduplicateLeads");
+const { deduplicateLeads } = require("../src/functions/deduplicateLeads");
 
 const assert = require("assert");
 
