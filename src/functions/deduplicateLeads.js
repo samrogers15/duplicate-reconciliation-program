@@ -10,13 +10,12 @@ const deduplicateLeads = (arr) => {
         arr.findIndex((t) => t.email === value.email) !== index;
       if (duplicateID) {
         writeLog(arr[index], "ID", arr[index]._id);
-        // return false;
+        return false;
       } else if (duplicateEmail) {
         writeLog(arr[index], "Email", arr[index].email);
-        // return false;
-      } else {
-        return true;
+        return false;
       }
+      return true;
     });
 };
 
