@@ -1,18 +1,18 @@
 const { writeLog } = require("./logDuplicates");
 
-const deduplicateLeads = (arr) => {
-  return arr
+const deduplicateLeads = (leadsArr) => {
+  return leadsArr
     .slice()
     .reverse()
-    .filter((value, index, arr) => {
-      const duplicateID = arr.findIndex((t) => t._id === value._id) !== index;
+    .filter((lead, index, arr) => {
+      const duplicateID = arr.findIndex((t) => t._id === lead._id) !== index;
       const duplicateEmail =
-        arr.findIndex((t) => t.email === value.email) !== index;
+        arr.findIndex((t) => t.email === lead.email) !== index;
       if (duplicateID) {
-        writeLog(arr[index], "ID", arr[index]._id);
+        writeLog(lead, "ID", lead._id);
         return false;
       } else if (duplicateEmail) {
-        writeLog(arr[index], "Email", arr[index].email);
+        writeLog(lead, "Email", lead.email);
         return false;
       }
       return true;
