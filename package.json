@@ -5,8 +5,8 @@
   "main": "deduplicator.js",
   "scripts": {
     "test": "mocha",
-    "start": "node ./main.js",
-    "start large": "node ./test/largeTestFile.js"
+    "start": "node main.js",
+    "largeTest": "node ./test/largeTestFile.js"
   },
   "repository": {
     "type": "git",
