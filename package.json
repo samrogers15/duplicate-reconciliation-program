@@ -4,7 +4,9 @@
   "description": "![GitHub Last Commit](https://img.shields.io/github/last-commit/samrogers15/duplicate-reconciliation-program?style=plastic) ![GitHub Repo Size](https://img.shields.io/github/repo-size/samrogers15/duplicate-reconciliation-program?style=plastic) ![GitHub Followers](https://img.shields.io/github/followers/samrogers15?style=social) ![GitHub](https://img.shields.io/github/languages/top/samrogers15/duplicate-reconciliation-program?style=plastic)",
   "main": "deduplicator.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node ./main.js",
+    "start large": "node ./test/largeTestFile.js"
   },
   "repository": {
     "type": "git",
