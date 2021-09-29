@@ -18,7 +18,7 @@
 
 
 ## Application Instructions
-This program is written in JavaScript and uses Node.js to create a command-line application that removes duplicate entries from an Array. Additionally, it also uses two NPM packages: Winston (to log the duplicate entries removed from the Array) and Mocha (a testing framework to ensure the functions are written and operating properly). The application has been written in three Javascript files:
+This program is written in JavaScript and uses Node.js to create a command-line application that removes duplicate entries from an Array. Additionally, it also uses two NPM packages: Winston (to log the duplicate entries removed from the Array) and Mocha (a testing framework to ensure the functions are written and operating properly). The application has been written in three Javascript files which are located in the src folder (`src/Functions/`):
 
 1. `deduplicateLeads.js` - This file contains the code for removing duplicate leads based on both Email and ID properties.
 2. `outputRevisedLeads.js` - This file contains the code for outputting a new JSON file containing the de-duplicated array.
@@ -29,19 +29,18 @@ To run this program:
 1. Clone repository to your local computer and open repository in preferred code editor (this program was written using Visual Studio Code).
 2. Initialize the NPM packages using the below protocol:
     * `npm install` - sets up program for local development and downloads required dependencies (in the case of this program, NPM Mocha and NPM Winston)
-3. Open an integrated terminal and run `node deduplicateLeads.js`
-    * The program will initiate and remove duplicate entries from the `leads.json` file housed in the `Inputs` folder
-    * The program will output the de-duplicated array to the `output.json` file housed in the `Outputs` folder
-    * A log of the changes will be generated with a filename of `duplicateEntries.log` so duplicate entries that were removed can be viewed and tracked.
-4. To run program on additional leads file with 10,000 leads, follow the below protocol once the repo is cloned to your local machine:
-    * Navigate to `deduplicateLeads.js` file
-    * Replace the code on line 2 from `const leads = require("./Inputs/leads.json").leads;` to `const leads = require("./Inputs/largeLeads.json").leads;`
-    * Run `node deduplicateLeads.js` in an integrated terminal
-
+3. Open an integrated terminal and run `NPM start`
+    * The program will initiate and remove duplicate entries from the `leads.json` file housed in the `src/Inputs` folder
+    * The program will create the `output.json` file housed in the `src/Outputs` folder and output the de-duplicated array to that file
+    * A log of the changes will be generated with a filename of `duplicateEntries.log` in the `src/Logs` folder, so duplicate entries that were removed can be viewed and tracked. Please note, this file is ignored by Git and is not included in the repo.
+4. To run program on additional leads file with 10,000 leads to test efficiency & efficacy, follow the below protocol once the repo is cloned to your local machine:
+    * Open an integrated terminal and run `NPM start large`
+      * The program will initiate and remove duplicate entries from the `largeLeads.json` file housed in the `src/Inputs` folder (this file has ~10,000 leads)
+      * The program will create the `testOutput.json` file housed in the `src/Outputs` folder and output the de-duplicated array to that file
+      * A log of the changes will be generated with a filename of `duplicateEntries.log` in the `src/Logs` folder, so duplicate entries that were removed can be viewed and tracked. Please note, this file is ignored by Git and is not included in the repo.
 
 
 ***Please note, if there are objects in the array with identical dates, the data from the record provided last in the list will be preferred***
-
 
 
 ## Testing Instructions
@@ -73,21 +72,22 @@ Program Output
 
 deduplicateLeads function:
 ```js
-const deduplicateLeads = (array) => {
-  return array
+const deduplicateLeads = (leadsArr) => {
+  return leadsArr
     .slice()
     .reverse()
-    .filter((value, index, arr) => {
-      const duplicateID = arr.findIndex((t) => t._id === value._id) === index;
+    .filter((lead, index, arr) => {
+      const duplicateID = arr.findIndex((t) => t._id === lead._id) !== index;
       const duplicateEmail =
-        arr.findIndex((t) => t.email === value.email) === index;
-      if (duplicateID === false) {
-        writeLog(arr[index], "ID", arr[index]._id);
-      } else if (duplicateEmail === false) {
-        writeLog(arr[index], "Email", arr[index].email);
-      } else {
-        return true;
+        arr.findIndex((t) => t.email === lead.email) !== index;
+      if (duplicateID) {
+        writeLog(lead, "ID", lead._id);
+        return false;
+      } else if (duplicateEmail) {
+        writeLog(lead, "Email", lead.email);
+        return false;
       }
+      return true;
     });
 };
 ```
