@@ -34,7 +34,7 @@ To run this program:
     * The program will create the `output.json` file housed in the `src/Outputs` folder and output the de-duplicated array to that file
     * A log of the changes will be generated with a filename of `duplicateEntries.log` in the `src/Logs` folder, so duplicate entries that were removed can be viewed and tracked. Please note, this file is ignored by Git and is not included in the repo.
 4. To run program on additional leads file with 10,000 leads to test efficiency & efficacy, follow the below protocol once the repo is cloned to your local machine:
-    * Open an integrated terminal and run `NPM start large`
+    * Open an integrated terminal and run `NPM run largeTest`
       * The program will initiate and remove duplicate entries from the `largeLeads.json` file housed in the `src/Inputs` folder (this file has ~10,000 leads)
       * The program will create the `testOutput.json` file housed in the `src/Outputs` folder and output the de-duplicated array to that file
       * A log of the changes will be generated with a filename of `duplicateEntries.log` in the `src/Logs` folder, so duplicate entries that were removed can be viewed and tracked. Please note, this file is ignored by Git and is not included in the repo.
