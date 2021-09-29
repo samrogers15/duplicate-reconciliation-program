@@ -5,7 +5,7 @@ const logger = createLogger({
   format: format.json(),
   transports: [
     new transports.Console(),
-    new transports.File({ filename: "../src/Logs/duplicateEntries.log" }),
+    new transports.File({ filename: "./src/Logs/duplicateEntries.log" }),
   ],
 });
 
